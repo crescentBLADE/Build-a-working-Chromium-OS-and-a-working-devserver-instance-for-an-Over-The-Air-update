@@ -115,3 +115,27 @@ man emerge
               Specifies an integer number of times to backtrack if dependency calculation fails due to a conflict or an unsatisfied dependency (default: ´3´).
 ```
 So  i use an insane number like 1000 to make sure nothing is missing or broken. And it works, finally build the packages.
+## Task 2 Kernel replacement
+### Deliverables
+* In the project documentation it asks to replace the kernel with version 5.15, then when I checked the src/overlays/overlay-amd64-generic/profiles/base/make.defaults file I found that the version defaults to 5.15, and for the betterment of the challenge I chose to upgrade the kernel version to 5.4
+* After carefully reviewing the Portage package management system and cros_sdk, I successfully replaced the original kernel and installed it remotely
+```
+cros_workon --board=${BOARD} start sys-kernel/chromeos-kernel-5_4
+# remove old kernel 
+emerge-amd64-generic --unmerge chromeos-kernel-5_15
+
+# buildkernel 
+cd ~/trunk/src/third_party/kernel/v5.4
+FEATURES="noclean" cros_workon_make --board=${BOARD} --install chromeos-kernel-5_4
+
+# Configure Kernel
+./chromeos/scripts/kernelconfig editconfig
+
+# add kernel
+emerge-${BOARD} sys-kernel/chromeos-kernel-5_4
+
+
+# remote install kernel
+~/trunk/src/scripts/update_kernel.sh --remote 127.0.0.1 --ssh_port 9222 
+```
+![image](https://github.com/crescentBLADE/FOr-FydeOS-developer-challenge/blob/main/update.jpg)
