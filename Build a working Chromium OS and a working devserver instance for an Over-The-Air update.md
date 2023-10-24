@@ -85,6 +85,9 @@ build_image --board=amd64-generic --no-enable-rootfs-verification test
 
 ```
 * Finally Run in qemu & SSH & VNC
+![image](https://github.com/crescentBLADE/FOr-FydeOS-developer-challenge/blob/main/os.jpg)
+![image](https://github.com/crescentBLADE/FOr-FydeOS-developer-challenge/blob/main/ssh.png)
+
 ### Gotchas & Challenges & Solutions
 
 * No build_packages  options for cros
