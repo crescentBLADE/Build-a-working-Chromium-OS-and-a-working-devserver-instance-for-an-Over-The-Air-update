@@ -139,3 +139,6 @@ emerge-${BOARD} sys-kernel/chromeos-kernel-5_4
 ~/trunk/src/scripts/update_kernel.sh --remote 127.0.0.1 --ssh_port 9222 
 ```
 ![image](https://github.com/crescentBLADE/FOr-FydeOS-developer-challenge/blob/main/update.jpg)
+## Task 3 CrOS devserver in docker
+### Deliverables
+> view all the acronyms  https://chromium.googlesource.com/chromiumos/docs/+/HEAD/glossary.md#acronyms
